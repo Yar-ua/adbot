@@ -16,19 +16,20 @@ services:
     depends_on:
       - db
       - pgadmin
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 80 -b '0.0.0.0'"
     # command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 80 -b '0.0.0.0'"
     volumes: 
       - .:/adbot
       - .bundle:/usr/local/bundle
     ports:
-      - 3000:3000
+      - 80:80
+      - 443:443
     stdin_open: true
     tty: true
     environment:
       - RAILS_ENV=development
-      - ASSIST_DOCTOR_BOT_TOKEN
-      - ASSIST_DOCTOR_HOST
+      - TELEGRAM_BOT_TOKEN=995220959:AAETVl7DF51WTQQv1s1wuMcu5Fnu_FedH4U
+      - HOST=91.201.224.42
 
   # prod:
   #   <<: *dev

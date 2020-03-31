@@ -54,3 +54,6 @@ In pgadmin for connect to DB create server and use next settings:
 - password: /.. empty field ../
 
 
+Bot register info:
+bot name: adbot
+bot username: adbot25_bot
