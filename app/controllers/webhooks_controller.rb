@@ -1,17 +1,15 @@
-# require 'telegram/bot'
-# class WebhooksController < ActionController::API
+require 'telegram/bot'
+class WebhooksController < ActionController::API
 
-#   token = ENV['TELEGRAM_BOT_TOKEN']
-#   def telegram
-#     Telegram::Bot::Client.run(token) do |bot|
+  def telegram
+    token = ENV['TELEGRAM_BOT_TOKEN']
+    Telegram::Bot::Client.run(token) do |bot|
       
-#       first_name = params[:message][:from][:first_name]
-#       cid = params[:message][:from][:id]
-#       text = params[:message][:text]
-      
-#       bot.api.send_message(chat_id: cid, text: "Привіт, #{first_name}")
-#       bot.api.send_message(chat_id: cid, text: "Ти написав\n#{text}")
-#     end
-#   end
+      message = params[:message]
+      cid = params[:message][:from][:id]
+      bot.api.send_message(chat_id: cid, text: "ping? pong! Here is your raw message...")
+      bot.api.send_message(chat_id: cid, text: message)
+    end
+  end
 
-# end
+end
